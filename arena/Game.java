@@ -3,13 +3,20 @@ package arena;
 public class Game {
 	public static void main(String[] args) {
 
-		Character player = new Character("Aleksei", 100);
+		Warrior warrior = new Warrior("Leonid",100,20);
+		Mage mage = new Mage("Vasiliy", 100, 40);
 
-		Character hero = new Warrior("Leonid",150,20);
+		//Воин атакует Мага
+		mage.damage(15);
+		boolean castSpellResult = mage.castSpell(20);
+		if (castSpellResult == true) {
+			warrior.damage(40);
+		} else{
+			System.out.println("Cast is falls!");
+		}
 
-		hero.damage(30);
-
-		System.out.println("Character " + hero.getName() + " hath "+ hero.getHealth() +"health");
+		System.out.println("Warrior " + warrior.getName() + " hath "+ warrior.getHealth() +" health");
+		System.out.println("Mage " + mage.getName() + " hath "+ mage.getHealth() + " health & " + mage.getMana() + " mana");
 	
 	}
 }
